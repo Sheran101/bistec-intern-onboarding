@@ -173,6 +173,3 @@ Operational Admin
 * Session recording
 * Session reminder
 * Online quiz and assignments support
-
-
-
