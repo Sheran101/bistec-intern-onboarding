@@ -1,0 +1,48 @@
+alerts:
+  - name: SearchSLOBurn
+    condition: "Search request error rate > 1% for 5 minutes"
+    severity: "Sev2"
+    notification: "PagerDuty + Microsoft Teams"
+    runbook: "reliability/sheran-day3-reliability-runbook.md#failure-3"
+
+  - name: ListingsEndpointDown
+    condition: "GET /books endpoint returns 5xx responses for 3 minutes"
+    severity: "Sev1"
+    notification: "On-call Pager + Teams"
+    runbook: "reliability/sheran-day3-reliability-runbook.md#failure-1"
+
+  - name: AzureSQLFailures
+    condition: "SQL dependency failures exceed 20 per minute for 3 consecutive minutes"
+    severity: "Sev1"
+    notification: "Database Team Pager"
+    runbook: "reliability/sheran-day3-reliability-runbook.md#failure-1"
+
+  - name: RedisUnavailable
+    condition: "Redis connection failures exceed 20 for 5 minutes"
+    severity: "Sev2"
+    notification: "Teams + Email"
+    runbook: "reliability/sheran-day3-reliability-runbook.md#failure-2"
+
+  - name: QueueDepthHigh
+    condition: "Azure Service Bus queue depth exceeds 1000 messages"
+    severity: "Sev2"
+    notification: "Operations Team"
+    runbook: "reliability/sheran-day3-reliability-runbook.md#failure-3"
+
+  - name: AuthFailureSpike
+    condition: "Authentication failures exceed 50 requests in 5 minutes"
+    severity: "Sev3"
+    notification: "Security Team Email"
+    runbook: "security/sheran-day3-security-review.md"
+
+  - name: HighLatencySearch
+    condition: "Search request p95 latency exceeds 800 ms for 10 minutes"
+    severity: "Sev2"
+    notification: "Operations Team + Teams"
+    runbook: "observability/sheran-day3-observability-plan.md"
+
+  - name: BlobStorageFailures
+    condition: "Blob Storage availability drops below 99%"
+    severity: "Sev3"
+    notification: "Cloud Team Email"
+    runbook: "reliability/sheran-day3-reliability-runbook.md"
